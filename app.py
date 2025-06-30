@@ -34,8 +34,8 @@ st.title("📈 單一ETF 查詢")
 ticker = st.text_input("輸入 ETF 代碼，例如 VTI", "")
 
 # 日期選擇(key=date1，和組合分析區隔)
-START_DATE = st.date_input("開始日期(2020起):", value=pd.to_datetime("2020-01-01"), key="START_DATE1")
-END_DATE = st.date_input("結束日期(至2024年底):", value=pd.to_datetime("2024-12-31"), key="END_DATE1")
+START_DATE = st.date_input("開始日期(2016起):", value=pd.to_datetime("2020-01-01"), key="START_DATE1")
+END_DATE = st.date_input("結束日期:", value=pd.to_datetime("2024-12-31"), key="END_DATE1")
 
 # main
 if ticker:
@@ -62,8 +62,8 @@ weights = portfolio_configs[strategy]
 tickers = list(weights.keys())
 
 # 日期選擇(key=date2，和單一分析區隔)
-START_DATE = st.date_input("開始日期(2020起):", value=pd.to_datetime("2020-01-01"), key="START_DATE2")
-END_DATE = st.date_input("結束日期(至2024年底):", value=pd.to_datetime("2024-12-31"), key="END_DATE2")
+START_DATE = st.date_input("開始日期(2016起):", value=pd.to_datetime("2020-01-01"), key="START_DATE2")
+END_DATE = st.date_input("結束日期:", value=pd.to_datetime("2024-12-31"), key="END_DATE2")
 
 
 # 指標顯示選項
@@ -106,6 +106,7 @@ if st.button("執行策略分析"):
         st.write(f"Sharpe Ratio：{sharpe:.2f}")
     if show_mdd:
         st.write(f"最大回撤：{mdd:.2%}")
+
 
 
 
