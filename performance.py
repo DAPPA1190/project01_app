@@ -19,7 +19,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Step 2.2: 載入 portfolio_config.json
+<<<<<<< HEAD
 with open("portfolio_config.json", "r") as f:
+=======
+with open("config/portfolio_config.json", "r") as f:
+>>>>>>> 4985aea (更新版本：加入 config 資料夾等)
     portfolio_config = json.load(f)
 
 #Step 2.3: strategy choice
@@ -127,7 +131,7 @@ plt.legend()
 plt.show()
 
 
-# In[ ]:
+
 
 
 
