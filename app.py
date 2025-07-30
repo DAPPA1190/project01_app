@@ -54,12 +54,6 @@ if ticker:
 st.header("📊 策略組合績效分析")
 
 # 從portfolio_config.json載入策略設定
-<<<<<<< HEAD
-with open("portfolio_config.json", "r") as f:
-    portfolio_configs = json.load(f)
-
-strategy = st.selectbox("選擇策略", list(portfolio_configs.keys()))
-=======
 with open("config/portfolio_config.json", "r") as f:
     portfolio_configs = json.load(f)
 strategy = st.selectbox("選擇預設策略或上傳csv自訂組合", list(portfolio_configs.keys()))
@@ -85,7 +79,6 @@ if strategy == "custom":
             st.error(f"❌ 上傳錯誤：{e}")
 
 #匯入數據
->>>>>>> 4985aea (更新版本：加入 config 資料夾等)
 weights = portfolio_configs[strategy]
 tickers = list(weights.keys())
 
@@ -93,34 +86,25 @@ tickers = list(weights.keys())
 START_DATE = st.date_input("開始日期(2016起):", value=pd.to_datetime("2020-01-01"), key="START_DATE2")
 END_DATE = st.date_input("結束日期:", value=pd.to_datetime("2024-12-31"), key="END_DATE2")
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4985aea (更新版本：加入 config 資料夾等)
 # 指標顯示選項
 show_ar = st.checkbox("顯示年化報酬率", value=True)
 show_vol = st.checkbox("顯示年化波動度", value=True)
 show_sharpe = st.checkbox("顯示 Sharpe Ratio", value=True)
 show_mdd = st.checkbox("顯示最大回撤", value=True)
-<<<<<<< HEAD
-=======
 
->>>>>>> 4985aea (更新版本：加入 config 資料夾等)
 #各ETF占比圓餅圖
 show_pie = st.checkbox("顯示各資產比重圓餅圖", value=False)
 
 # main
 if st.button("執行策略分析"):
     data = yf.download(tickers, start=START_DATE, end=END_DATE, auto_adjust=False)["Adj Close"]
-<<<<<<< HEAD
-=======
-    
+  
     # 資料檢查
     if data.empty or data.isnull().values.any():
         st.error("❌ 某些資產資料下載失敗或缺漏，請檢查 Ticker 是否正確。")
         st.stop()
         
->>>>>>> 4985aea (更新版本：加入 config 資料夾等)
     returns_df = np.log(data / data.shift(1)).dropna()
     portfolio_returns = calculate_portfolio_return(returns_df, weights)
     cumulative_returns = (1 + portfolio_returns).cumprod()
